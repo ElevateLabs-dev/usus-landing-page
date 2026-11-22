@@ -79,28 +79,30 @@ export function LandingHero() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
 
           <Link
-            href="#demo"
-            className="
-              inline-flex
-              h-12
-              min-w-[140px]
-              items-center
-              justify-center
-              bg-[var(--usus-primary)]
-              px-7
-              text-xs
-              font-semibold
-              uppercase
-              tracking-wide
-              text-[#252624]
-              transition-colors
-              hover:bg-[var(--usus-primary-hover)]
-            "
-          >
-            Get in Touch
-          </Link>
+  href={`${process.env.NEXT_PUBLIC_APP_URL}/onboarding`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    inline-flex
+    h-12
+    min-w-[140px]
+    items-center
+    justify-center
+    bg-[var(--usus-primary)]
+    px-7
+    text-xs
+    font-semibold
+    uppercase
+    tracking-wide
+    text-[#252624]
+    transition-colors
+    hover:bg-[var(--usus-primary-hover)]
+  "
+>
+  Get Started
+</Link>
 
-          <a
+          <Link
             href="#product-video"
             className="
               inline-flex
@@ -122,7 +124,7 @@ export function LandingHero() {
             "
           >
             Take a Tour
-          </a>
+          </Link>
 
         </div>
 
