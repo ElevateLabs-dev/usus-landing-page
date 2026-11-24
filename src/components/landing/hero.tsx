@@ -1,6 +1,9 @@
 import Link from "next/link";
 
 export function LandingHero() {
+
+  const appUrl = (process.env.NEXT_PUBLIC_APP_URL || "https://app.meetusus.com").replace(/\/$/, "");
+
   return (
     <section
       id="top"
@@ -79,7 +82,7 @@ export function LandingHero() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
 
           <Link
-  href={`${process.env.NEXT_PUBLIC_APP_URL}/onboarding`}
+  href={`${appUrl}/onboarding`}
   target="_blank"
   rel="noopener noreferrer"
   className="
