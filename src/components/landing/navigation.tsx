@@ -11,6 +11,8 @@ const navigation = [
 ];
 
 export function LandingNavigation() {
+    const appUrl = (process.env.NEXT_PUBLIC_APP_URL!).replace(/\/$/, "");
+    
   return (
     <header
       className="
@@ -97,7 +99,9 @@ export function LandingNavigation() {
           <ThemeToggle />
 
           <Link
-            href="/login"
+            href={`${appUrl}/login`}
+  target="_blank"
+  rel="noopener noreferrer"
             className="
               inline-flex h-[40px] items-center justify-center
               border border-[var(--usus-border)]
@@ -113,7 +117,7 @@ export function LandingNavigation() {
           </Link>
 
           <Link
-            href="mailto:hello@elevatelabs.dev"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@elevatelabs.dev"
             className="
               inline-flex h-[40px] items-center justify-center
               bg-[var(--usus-primary)] px-5
@@ -189,7 +193,9 @@ export function LandingNavigation() {
 
               <div className="mt-5 flex flex-col gap-3">
                 <Link
-                  href="/login"
+                  href={`${appUrl}/login`}
+  target="_blank"
+  rel="noopener noreferrer"
                   className="
                     flex h-11 items-center justify-center
                     border border-[var(--usus-border)]
@@ -200,8 +206,7 @@ export function LandingNavigation() {
                   Login
                 </Link>
 
-                <Link
-                  href="mailto:hello@elevatelabs.dev"
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@elevatelabs.dev"
                   className="
                     flex h-11 items-center justify-center
                     bg-[var(--usus-primary)]
@@ -210,7 +215,7 @@ export function LandingNavigation() {
                   "
                 >
                   Contact Us Now
-                </Link>
+                </a>
               </div>
             </div>
           </details>

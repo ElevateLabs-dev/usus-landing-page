@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cacheLife } from 'next/cache';
+import Image from "next/image";
 
 
 const footerGroups = [
@@ -73,6 +74,7 @@ function WaveGraphic() {
 }
 
 export function LandingCTA() {
+  const appUrl = (process.env.NEXT_PUBLIC_APP_URL!).replace(/\/$/, "");
   return (
     <section className="usus-cta" id="contact">
       <div className="usus-cta-inner">
@@ -91,13 +93,18 @@ export function LandingCTA() {
           </p>
 
           <div className="usus-cta-actions">
-            <Link href="mailto:hello@elevatelabs.dev" className="usus-cta-button primary">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@elevatelabs.dev" 
+            className="usus-cta-button primary uppercase">
               Contact Us Now
               <span aria-hidden="true">→</span>
-            </Link>
+            </a>
 
-            <Link href="#solutions" className="usus-cta-button secondary">
-              EXPLORE USUS
+            <Link 
+            href={`${appUrl}/login`}
+  target="_blank"
+  rel="noopener noreferrer"
+            className="usus-cta-button secondary uppercase">
+              Get Started
               <span aria-hidden="true">→</span>
             </Link>
           </div>
@@ -125,10 +132,29 @@ export async function LandingFooter() {
     <footer className="usus-footer">
       <div className="usus-footer-inner">
         <div className="usus-footer-brand">
-          <Link href="/" className="usus-footer-logo">
-            <span className="usus-logo-mark">✳</span>
-            <span>USUS</span>
-          </Link>
+          <Link
+          href="/"
+          aria-label="USUS home"
+          className="flex shrink-0 items-center"
+        >
+          <Image
+            src="/brand/logos/Usus-black.svg"
+            alt="USUS"
+            width={150}
+            height={40}
+            priority
+            className="usus-logo-light h-auto w-[120px] md:w-[145px]"
+          />
+
+          <Image
+            src="/brand/logos/Usus-white.svg"
+            alt="USUS"
+            width={150}
+            height={40}
+            priority
+            className="usus-logo-dark h-auto w-[120px] md:w-[145px]"
+          />
+        </Link>
 
           <p>
             Try Roleplay with USUS

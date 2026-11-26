@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function LandingHero() {
 
-  const appUrl = (process.env.NEXT_PUBLIC_APP_URL || "https://app.meetusus.com").replace(/\/$/, "");
+  const appUrl = (process.env.NEXT_PUBLIC_APP_URL!).replace(/\/$/, "");
 
   return (
     <section
