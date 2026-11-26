@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { UsusLogo } from "../brand/usus-logo";
 
 const navigation = [
   { label: "Solutions", href: "#solutions", dropdown: true },
@@ -36,23 +37,13 @@ export function LandingNavigation() {
           aria-label="USUS home"
           className="flex shrink-0 items-center"
         >
-          <Image
-            src="/brand/logos/Usus-black.svg"
-            alt="USUS"
-            width={150}
-            height={40}
-            priority
+          <UsusLogo
             className="usus-logo-light h-auto w-[120px] md:w-[145px]"
           />
-
-          <Image
-            src="/brand/logos/Usus-white.svg"
-            alt="USUS"
-            width={150}
-            height={40}
-            priority
+          <UsusLogo
             className="usus-logo-dark h-auto w-[120px] md:w-[145px]"
           />
+          
         </Link>
 
         {/* DESKTOP NAVIGATION */}
