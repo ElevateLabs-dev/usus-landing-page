@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-
-import "./globals.css";
-
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import "./globals.css"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://usus-frontend.vercel.app/"),
+  metadataBase: new URL("https://meetusus.com"),
 
   title: {
     default: "USUS | AI Simulation Training",

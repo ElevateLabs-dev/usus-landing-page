@@ -1,9 +1,12 @@
-/* CTA */
+/* =========================================
+   CTA SECTION
+========================================= */
 
 .usus-cta,
 .usus-footer {
   background: var(--usus-surface);
   color: var(--usus-text);
+  font-family: var(--font-body);
 }
 
 .usus-cta {
@@ -14,10 +17,11 @@
 }
 
 .usus-cta-inner {
+  width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
   gap: 50px;
 }
@@ -25,12 +29,14 @@
 .usus-cta-content {
   position: relative;
   z-index: 1;
+  min-width: 0;
 }
 
 .usus-cta-eyebrow {
   display: inline-block;
   margin-bottom: 24px;
   color: var(--usus-primary);
+  font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -39,14 +45,15 @@
 .usus-cta h2 {
   margin: 0;
   color: var(--usus-text);
+  font-family: var(--font-mono);
   font-size: clamp(39px, 4.5vw, 68px);
   font-style: normal;
+  font-weight: 400;
   line-height: 1.13;
   letter-spacing: -2.5px;
-  font-weight: 400;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
-
 
 .usus-cta-content p {
   max-width: 470px;
@@ -70,21 +77,38 @@
   justify-content: space-between;
   gap: 25px;
   border: 1px solid var(--usus-border);
+  font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.7px;
   text-decoration: none;
-  transition: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .usus-cta-button span {
+  display: inline-block;
   font-size: 19px;
+  transition: transform 0.25s ease;
+}
+
+.usus-cta-button:hover span {
+  transform: translateX(4px);
 }
 
 .usus-cta-button.primary {
   background: var(--usus-primary);
   border-color: var(--usus-primary);
-  color: #171817;
+  color: #f7f6f1;
+}
+
+.usus-cta-button.primary:hover {
+  background: var(--usus-primary-hover);
+  border-color: var(--usus-primary-hover);
 }
 
 .usus-cta-button.secondary {
@@ -92,18 +116,28 @@
   background: transparent;
 }
 
-.usus-cta-button:hover {
-  transform: none;
-  box-shadow: none;
+.usus-cta-button.secondary:hover {
+  color: var(--usus-primary);
+  border-color: var(--usus-primary);
 }
 
-/* Abstract wave */
+.usus-cta-button:focus-visible,
+.usus-footer a:focus-visible {
+  outline: 2px solid var(--usus-primary);
+  outline-offset: 4px;
+}
+
+
+/* =========================================
+   ABSTRACT WAVE
+========================================= */
 
 .usus-cta-visual {
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 0;
+  width: 100%;
 }
 
 .usus-wave {
@@ -112,9 +146,75 @@
   max-width: 700px;
   height: auto;
   color: var(--usus-text-muted);
+  overflow: visible;
 }
 
-/* Footer */
+
+/* =========================================
+   WAVE LINE ANIMATION
+========================================= */
+
+.usus-cta-visual .usus-wave-line {
+  animation: ususWaveBreathe 5s ease-in-out infinite alternate;
+  animation-delay: calc(var(--wave-index, 0) * 0.12s);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes ususWaveBreathe {
+  0% {
+    opacity: 0.12;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+
+/* =========================================
+   FLOATING PLUS SIGN ANIMATION
+========================================= */
+
+.usus-cta-visual .usus-plus {
+  display: inline-block;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ususPlusFloat 4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes ususPlusFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.4;
+  }
+
+  25% {
+    transform: translateY(-5px) rotate(5deg) scale(1.1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(15deg) scale(1.3);
+    opacity: 1;
+  }
+
+  75% {
+    transform: translateY(-5px) rotate(5deg) scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
 
 .usus-footer {
   padding: 65px 5% 25px;
@@ -122,6 +222,7 @@
 }
 
 .usus-footer-inner {
+  width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
@@ -129,11 +230,16 @@
   gap: 45px;
 }
 
+.usus-footer-brand {
+  min-width: 0;
+}
+
 .usus-footer-logo {
   display: inline-flex;
   align-items: center;
   gap: 9px;
   color: var(--usus-text);
+  font-family: var(--font-mono);
   font-size: 27px;
   font-weight: 600;
   letter-spacing: -1.5px;
@@ -146,6 +252,7 @@
 }
 
 .usus-footer-brand p {
+  max-width: 320px;
   margin-top: 18px;
   color: var(--usus-text-muted);
   font-size: 13px;
@@ -162,6 +269,7 @@
 .usus-footer-column h3 {
   margin: 5px 0 4px;
   color: var(--usus-primary);
+  font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 600;
 }
@@ -171,6 +279,7 @@
   color: var(--usus-text-muted);
   font-size: 13px;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .usus-footer-column a:hover,
@@ -179,23 +288,29 @@
 }
 
 .usus-footer-bottom {
+  width: 100%;
   max-width: 1400px;
   margin: 65px auto 0;
   padding-top: 22px;
   border-top: 1px solid var(--usus-border);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
-  color: var(--usus-text-soft);
+  color: var(--usus-text-muted);
   font-size: 12px;
 }
 
 .usus-footer-bottom div {
   display: flex;
+  align-items: center;
   gap: 25px;
 }
 
-/* Responsive */
+
+/* =========================================
+   TABLET RESPONSIVENESS
+========================================= */
 
 @media (max-width: 900px) {
   .usus-cta {
@@ -204,7 +319,11 @@
 
   .usus-cta-inner {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 35px;
+  }
+
+  .usus-cta-content {
+    max-width: 650px;
   }
 
   .usus-cta-visual {
@@ -213,44 +332,67 @@
   }
 
   .usus-footer-inner {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 40px;
   }
 }
+
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
 
 @media (max-width: 550px) {
   .usus-cta {
     padding: 65px 6%;
   }
 
+  .usus-cta-eyebrow {
+    margin-bottom: 18px;
+    font-size: 10px;
+    letter-spacing: 1.7px;
+  }
+
   .usus-cta h2 {
-    font-size: 39px;
+    font-size: clamp(34px, 9vw, 42px);
+    line-height: 1.15;
     letter-spacing: -1.5px;
   }
 
   .usus-cta-content p {
+    margin: 20px 0 25px;
     font-size: 14px;
+    line-height: 1.75;
   }
 
   .usus-cta-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
 
   .usus-cta-button {
     width: 100%;
+    min-height: 50px;
   }
 
   .usus-cta-visual {
     margin-top: 10px;
+    width: 100%;
   }
+
+  .usus-wave {
+    width: 100%;
+  }
+
+  /* Footer */
 
   .usus-footer {
     padding: 50px 6% 20px;
   }
 
   .usus-footer-inner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 35px 20px;
   }
 
@@ -258,27 +400,81 @@
     grid-column: 1 / -1;
   }
 
+  .usus-footer-logo {
+    font-size: 25px;
+  }
+
+  .usus-footer-brand p {
+    max-width: 100%;
+    font-size: 13px;
+  }
+
+  .usus-footer-column {
+    gap: 14px;
+  }
+
+  .usus-footer-column h3 {
+    font-size: 12px;
+  }
+
+  .usus-footer-column a {
+    font-size: 12px;
+  }
+
   .usus-footer-bottom {
     margin-top: 45px;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
   }
 
   .usus-footer-bottom div {
     flex-wrap: wrap;
+    gap: 15px 20px;
   }
 }
 
-/* Typography */
 
-.usus-cta,
-.usus-footer {
-  font-family: var(--font-body);
+/* =========================================
+   SMALL MOBILE SCREENS
+========================================= */
+
+@media (max-width: 360px) {
+  .usus-cta {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .usus-cta h2 {
+    font-size: 32px;
+    letter-spacing: -1.2px;
+  }
+
+  .usus-footer-inner {
+    gap: 30px 14px;
+  }
+
+  .usus-footer-bottom div {
+    gap: 12px;
+  }
 }
 
-.usus-cta h2,
-.usus-cta-eyebrow,
-.usus-footer-column h3,
-.usus-footer-logo,
-.usus-cta-button {
-  font-family: var(--font-mono);
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .usus-cta-visual .usus-plus,
+  .usus-cta-visual .usus-wave-line {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .usus-cta-button,
+  .usus-cta-button span,
+  .usus-footer-column a,
+  .usus-footer-bottom a {
+    transition: none !important;
+  }
 }
