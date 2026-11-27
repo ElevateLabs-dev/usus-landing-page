@@ -97,7 +97,7 @@ export function LandingHero() {
     font-semibold
     uppercase
     tracking-wide
-    text-[#252624]
+    text-[#f7f6f1]
     transition-colors
     hover:bg-[var(--usus-primary-hover)]
   "

@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { cacheLife } from 'next/cache';
 import Image from "next/image";
-
+import { cacheLife } from "next/cache";
 
 const footerGroups = [
   {
@@ -33,6 +32,10 @@ const footerGroups = [
   },
 ];
 
+/* =========================================
+   ANIMATED WAVE GRAPHIC
+========================================= */
+
 function WaveGraphic() {
   return (
     <svg
@@ -42,19 +45,26 @@ function WaveGraphic() {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {Array.from({ length: 24 }).map((_, i) => (
-        <path
-          key={i}
-          d={`M 0 ${145 + i * 3} C 120 ${20 + i * 5}, 160 ${
-            290 - i * 4
-          }, 300 ${155 + i * 2} S 520 ${20 + i * 5}, 700 ${
-            90 + i * 4
-          }`}
-          stroke="currentColor"
-          strokeWidth="0.8"
-          opacity={0.12 + (i % 5) * 0.035}
-        />
-      ))}
+      {/* Wave Lines */}
+
+      <g className="usus-wave-lines">
+        {Array.from({ length: 24 }).map((_, i) => (
+          <path
+            key={i}
+            className="usus-wave-line"
+            d={`M 0 ${145 + i * 3} C 120 ${20 + i * 5}, 160 ${
+              290 - i * 4
+            }, 300 ${155 + i * 2} S 520 ${20 + i * 5}, 700 ${
+              90 + i * 4
+            }`}
+            stroke="currentColor"
+            strokeWidth="0.8"
+            opacity={0.12 + (i % 5) * 0.035}
+          />
+        ))}
+      </g>
+
+      {/* Floating Plus Signs */}
 
       {Array.from({ length: 30 }).map((_, i) => (
         <g
@@ -66,20 +76,36 @@ function WaveGraphic() {
           strokeWidth="0.8"
           opacity="0.35"
         >
-          <path d="M-4 0H4M0 -4V4" />
+          <g
+            className="usus-plus"
+            style={{
+              animationDelay: `${(i % 10) * 0.35}s`,
+            }}
+          >
+            <path d="M-4 0H4M0 -4V4" />
+          </g>
         </g>
       ))}
     </svg>
   );
 }
 
+/* =========================================
+   LANDING CTA
+========================================= */
+
 export function LandingCTA() {
-  const appUrl = (process.env.NEXT_PUBLIC_APP_URL!).replace(/\/$/, "");
+  const appUrl = (process.env.NEXT_PUBLIC_APP_URL || "").replace(/\/$/, "");
+
   return (
     <section className="usus-cta" id="contact">
       <div className="usus-cta-inner">
+        {/* CTA Content */}
+
         <div className="usus-cta-content">
-          <span className="usus-cta-eyebrow">READY TO GET STARTED?</span>
+          <span className="usus-cta-eyebrow">
+            READY TO GET STARTED?
+          </span>
 
           <h2>
             TURN PRACTICE
@@ -93,22 +119,33 @@ export function LandingCTA() {
           </p>
 
           <div className="usus-cta-actions">
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@elevatelabs.dev" 
-            className="usus-cta-button primary uppercase">
+            {/* Contact Button */}
+
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@elevatelabs.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="usus-cta-button primary uppercase"
+            >
               Contact Us Now
               <span aria-hidden="true">→</span>
             </a>
 
-            <Link 
-            href={`${appUrl}/login`}
-  target="_blank"
-  rel="noopener noreferrer"
-            className="usus-cta-button secondary uppercase">
+            {/* Get Started Button */}
+
+            <Link
+              href={`${appUrl}/onboarding`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="usus-cta-button secondary uppercase"
+            >
               Get Started
               <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
+
+        {/* Animated Wave Visual */}
 
         <div className="usus-cta-visual">
           <WaveGraphic />
@@ -118,48 +155,58 @@ export function LandingCTA() {
   );
 }
 
+/* =========================================
+   FOOTER DATA
+========================================= */
 
 async function getCurrentYear() {
-  'use cache';
-  cacheLife('days');
+  "use cache";
+  cacheLife("days");
+
   return new Date().getFullYear();
 }
 
+/* =========================================
+   LANDING FOOTER
+========================================= */
 
 export async function LandingFooter() {
   const year = await getCurrentYear();
+
   return (
     <footer className="usus-footer">
       <div className="usus-footer-inner">
+        {/* Brand */}
+
         <div className="usus-footer-brand">
           <Link
-          href="/"
-          aria-label="USUS home"
-          className="flex shrink-0 items-center"
-        >
-          <Image
-            src="/brand/logos/Usus-black.svg"
-            alt="USUS"
-            width={150}
-            height={40}
-            priority
-            className="usus-logo-light h-auto w-[120px] md:w-[145px]"
-          />
+            href="/"
+            aria-label="USUS home"
+            className="flex shrink-0 items-center"
+          >
+            <Image
+              src="/brand/logos/Usus-black.svg"
+              alt="USUS"
+              width={150}
+              height={40}
+              priority
+              className="usus-logo-light h-auto w-[120px] md:w-[145px]"
+            />
 
-          <Image
-            src="/brand/logos/Usus-white.svg"
-            alt="USUS"
-            width={150}
-            height={40}
-            priority
-            className="usus-logo-dark h-auto w-[120px] md:w-[145px]"
-          />
-        </Link>
+            <Image
+              src="/brand/logos/Usus-white.svg"
+              alt="USUS"
+              width={150}
+              height={40}
+              priority
+              className="usus-logo-dark h-auto w-[120px] md:w-[145px]"
+            />
+          </Link>
 
-          <p>
-            Try Roleplay with USUS
-          </p>
+          <p>Try Roleplay with USUS</p>
         </div>
+
+        {/* Footer Links */}
 
         {footerGroups.map((group) => (
           <div className="usus-footer-column" key={group.title}>
@@ -174,11 +221,13 @@ export async function LandingFooter() {
         ))}
       </div>
 
+      {/* Footer Bottom */}
+
       <div className="usus-footer-bottom">
         <span>&copy; {year} USUS. All rights reserved.</span>
 
         <div>
-          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
           <Link href="/terms">Terms of Service</Link>
         </div>
       </div>

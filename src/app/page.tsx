@@ -1,6 +1,3 @@
-import Link from "next/link";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
-import { UsusLogo } from "@/components/brand/usus-logo";
 import { UsusFAQ } from "@/components/faq/usus-faq";
 import { PricingSection } from "@/components/pricing/pricing";
 import { LandingNavigation } from "@/components/landing/navigation";

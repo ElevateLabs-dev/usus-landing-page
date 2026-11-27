@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+
 
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { UsusLogo } from "../brand/usus-logo";
@@ -43,7 +43,7 @@ export function LandingNavigation() {
           <UsusLogo
             className="usus-logo-dark h-auto w-[120px] md:w-[145px]"
           />
-          
+
         </Link>
 
         {/* DESKTOP NAVIGATION */}
@@ -113,7 +113,7 @@ export function LandingNavigation() {
               inline-flex h-[40px] items-center justify-center
               bg-[var(--usus-primary)] px-5
               text-[10px] font-semibold uppercase tracking-wider
-              text-[#252624]
+              text-[#f7f6f1]
               transition-colors
               hover:bg-[var(--usus-primary-hover)]
             "
@@ -202,7 +202,7 @@ export function LandingNavigation() {
                     flex h-11 items-center justify-center
                     bg-[var(--usus-primary)]
                     text-xs font-semibold uppercase tracking-wide
-                    text-[#252624]
+                    text-[#f7f6f1]
                   "
                 >
                   Contact Us Now
